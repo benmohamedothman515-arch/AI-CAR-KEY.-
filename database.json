@@ -1,0 +1,47 @@
+
+{
+  "database_name": "AI CAR KEY",
+  "version": "1.0",
+  "records": [
+    {
+      "brand": "Toyota",
+      "model": "Corolla",
+      "years": [2020],
+      "key_type": "Remote key",
+      "reference": "TOY53CP42",
+      "status": "needs_verification",
+      "source": "Silca catalogue",
+      "notes": "Compatibility must be checked by vehicle market and trim."
+    },
+    {
+      "brand": "Toyota",
+      "model": "Yaris",
+      "years": [2018, 2019, 2020],
+      "key_type": "Mechanical key",
+      "reference": "",
+      "status": "needs_verification",
+      "source": "To be researched",
+      "notes": "Reference and compatibility not yet confirmed."
+    },
+    {
+      "brand": "BMW",
+      "model": "3 Series",
+      "years": [2018, 2019, 2020],
+      "key_type": "Smart key",
+      "reference": "",
+      "status": "needs_verification",
+      "source": "To be researched",
+      "notes": "Vehicle version and market must be checked."
+    },
+    {
+      "brand": "Mercedes-Benz",
+      "model": "C-Class",
+      "years": [2018, 2019, 2020],
+      "key_type": "Smart key",
+      "reference": "",
+      "status": "needs_verification",
+      "source": "To be researched",
+      "notes": "Vehicle version and market must be checked."
+    }
+  ]
+}
