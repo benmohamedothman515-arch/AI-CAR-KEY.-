@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI CAR KEY - Global</title>
+
 <style>
 *{box-sizing:border-box}
 body{
@@ -46,22 +47,29 @@ width:100%;
 margin:12px 0;
 font-size:16px;
 }
-#preview{max-width:100%;border-radius:12px;margin-top:15px}
-#searchResult{
+#preview{
+max-width:100%;
+border-radius:12px;
+margin-top:15px
+}
+.result{
 background:#0b1c2d;
 padding:15px;
 border-radius:10px;
 margin-top:15px;
-line-height:1.8;
+line-height:1.9;
+overflow-wrap:anywhere;
 }
 footer{padding:25px;color:#9cb5c9}
 </style>
 </head>
+
 <body>
 
 <header>
 <h1>🔑 AI CAR KEY</h1>
 <p>Global Car Key Recognition</p>
+
 <select id="language" onchange="changeLanguage()">
 <option value="ar">العربية</option>
 <option value="fr">Français</option>
@@ -70,24 +78,26 @@ footer{padding:25px;color:#9cb5c9}
 </header>
 
 <main>
+
 <h2 id="welcome">مرحباً بك في AI CAR KEY</h2>
 <p id="description">منصة ذكية للتعرف على مفاتيح السيارات</p>
 
 <div class="card">
-<h3 id="owner">🚘 قسم أصحاب السيارات</h3>
-<p id="ownerText">حمّل صورة مفتاح سيارتك للتعرف على شكله.</p>
 
-<h3 id="searchTitle">ابحث عن مفتاح سيارتك</h3>
+<h3 id="owner">🚘 قسم أصحاب السيارات</h3>
+<p id="ownerText">ابحث عن مفتاح سيارتك أو حمّل صورته.</p>
+
+<h3 id="searchTitle">البحث في قاعدة بيانات المفاتيح</h3>
 
 <select id="brand" onchange="loadModels()">
-<option value="">اختر ماركة السيارة</option>
+<option value="">تحميل الماركات...</option>
 </select>
 
-<select id="model" disabled>
+<select id="model" onchange="loadYears()" disabled>
 <option value="">اختر الموديل</option>
 </select>
 
-<select id="year">
+<select id="year" disabled>
 <option value="">اختر سنة الصنع</option>
 </select>
 
@@ -95,21 +105,24 @@ footer{padding:25px;color:#9cb5c9}
 ابحث عن المفتاح
 </button>
 
-<div id="searchResult" hidden></div>
+<div id="searchResult" class="result" hidden></div>
 
 <hr style="border-color:#25465f;margin:25px 0">
 
 <p id="photoText">أو صوّر مفتاح سيارتك</p>
 
-<input type="file" accept="image/*"
-capture="environment" id="photo">
+<input type="file"
+accept="image/*"
+capture="environment"
+id="photo">
 
 <button onclick="previewPhoto()" id="scan">
 اختيار وتصوير المفتاح
 </button>
 
 <img id="preview" hidden>
-<p id="result"></p>
+<p id="photoResult"></p>
+
 </div>
 
 <div class="card">
@@ -126,24 +139,18 @@ id="proButton">Professional Area</button>
 <footer>AI CAR KEY © 2026</footer>
 
 <script>
-const carModels={
-Toyota:["Corolla","Yaris","Camry","RAV4","Hilux","Land Cruiser"],
-Mercedes:["A-Class","C-Class","E-Class","S-Class","GLC"],
-BMW:["Series 1","Series 3","Series 5","X1","X3","X5"],
-Renault:["Clio","Megane","Captur","Kadjar","Kangoo"],
-Volkswagen:["Golf","Polo","Passat","Tiguan","Touareg"],
-Peugeot:["208","308","2008","3008","508"],
-Hyundai:["i10","i20","i30","Tucson","Santa Fe"],
-Kia:["Picanto","Rio","Ceed","Sportage","Sorento"]
-};
 
-const translations={
+let database = [];
+let currentLang = "ar";
+
+const translations = {
+
 ar:{
 welcome:"مرحباً بك في AI CAR KEY",
 description:"منصة ذكية للتعرف على مفاتيح السيارات",
 owner:"🚘 قسم أصحاب السيارات",
-ownerText:"حمّل صورة مفتاح سيارتك للتعرف على شكله.",
-searchTitle:"ابحث عن مفتاح سيارتك",
+ownerText:"ابحث عن مفتاح سيارتك أو حمّل صورته.",
+searchTitle:"البحث في قاعدة بيانات المفاتيح",
 brand:"اختر ماركة السيارة",
 model:"اختر الموديل",
 year:"اختر سنة الصنع",
@@ -154,18 +161,27 @@ pro:"🛠️ قسم المحترفين",
 proText:"خدمات ومعلومات فنية لمحترفي مفاتيح السيارات.",
 proButton:"قسم المحترفين",
 coming:"قسم المحترفين قيد التطوير",
+loading:"جاري تحميل قاعدة البيانات...",
+loadError:"تعذر تحميل قاعدة البيانات. تأكد من وجود database.json.",
 missing:"الرجاء اختيار الماركة والموديل والسنة.",
-found:"بيانات السيارة التي اخترتها:",
-pending:"قاعدة بيانات توافق المفاتيح قيد الإنشاء. لم يتم تأكيد نوع المفتاح بعد.",
+notFound:"لا توجد معلومات مسجلة لهذه السيارة في قاعدة البيانات حتى الآن.",
+found:"معلومات المفتاح والسيارة:",
+keyType:"نوع المفتاح",
+reference:"المرجع",
+status:"حالة التحقق",
+source:"المصدر",
+pending:"يحتاج إلى التحقق من التوافق",
+verified:"تم التحقق",
 uploaded:"تم تحميل الصورة بنجاح. التعرف الذكي سيضاف في المرحلة القادمة.",
 noPhoto:"الرجاء اختيار صورة المفتاح."
 },
+
 fr:{
 welcome:"Bienvenue sur AI CAR KEY",
 description:"Plateforme intelligente de reconnaissance des clés automobiles",
 owner:"🚘 Espace propriétaires",
-ownerText:"Importez une photo de votre clé de voiture.",
-searchTitle:"Rechercher votre clé",
+ownerText:"Recherchez votre clé ou importez sa photo.",
+searchTitle:"Recherche dans la base de données",
 brand:"Choisir la marque",
 model:"Choisir le modèle",
 year:"Choisir l'année",
@@ -176,18 +192,27 @@ pro:"🛠️ Espace professionnels",
 proText:"Services et informations pour les professionnels.",
 proButton:"Espace professionnels",
 coming:"Espace professionnels bientôt disponible",
+loading:"Chargement de la base de données...",
+loadError:"Impossible de charger la base de données.",
 missing:"Veuillez choisir la marque, le modèle et l'année.",
-found:"Informations sur le véhicule sélectionné :",
-pending:"La base de compatibilité des clés est en cours de création. La clé n'est pas encore identifiée.",
+notFound:"Aucune information enregistrée pour ce véhicule.",
+found:"Informations sur la clé et le véhicule :",
+keyType:"Type de clé",
+reference:"Référence",
+status:"État de vérification",
+source:"Source",
+pending:"Compatibilité à vérifier",
+verified:"Vérifié",
 uploaded:"Image téléchargée. La reconnaissance intelligente sera ajoutée prochainement.",
 noPhoto:"Veuillez choisir une photo."
 },
+
 en:{
 welcome:"Welcome to AI CAR KEY",
 description:"Smart car key recognition platform",
 owner:"🚘 Car Owners",
-ownerText:"Upload a photo of your car key.",
-searchTitle:"Search for your car key",
+ownerText:"Search for your key or upload its photo.",
+searchTitle:"Search the key database",
 brand:"Select car brand",
 model:"Select model",
 year:"Select year",
@@ -198,59 +223,141 @@ pro:"🛠️ Professionals",
 proText:"Services and technical information for professionals.",
 proButton:"Professional Area",
 coming:"Professional area coming soon",
+loading:"Loading database...",
+loadError:"Could not load the database.",
 missing:"Please select brand, model and year.",
-found:"Selected vehicle information:",
-pending:"The key compatibility database is being built. The key type has not yet been verified.",
+notFound:"No information is registered for this vehicle yet.",
+found:"Vehicle and key information:",
+keyType:"Key type",
+reference:"Reference",
+status:"Verification status",
+source:"Source",
+pending:"Compatibility needs verification",
+verified:"Verified",
 uploaded:"Image uploaded successfully. Smart recognition will be added in a future stage.",
 noPhoto:"Please select a key photo."
 }
+
 };
 
-let currentLang="ar";
-
-function initialize(){
-const brand=document.getElementById("brand");
-Object.keys(carModels).forEach(name=>{
+function addOption(select,value,label){
 const option=document.createElement("option");
-option.value=name;
-option.textContent=name;
-brand.appendChild(option);
+option.value=value;
+option.textContent=label;
+select.appendChild(option);
+}
+
+async function loadDatabase(){
+
+const brand=document.getElementById("brand");
+const t=translations[currentLang];
+
+brand.innerHTML="";
+addOption(brand,"",t.loading);
+
+try{
+
+const response=await fetch("./database.json");
+
+if(!response.ok){
+throw new Error("Database file not found");
+}
+
+const data=await response.json();
+
+if(!Array.isArray(data.records)){
+throw new Error("Invalid database format");
+}
+
+database=data.records;
+
+brand.innerHTML="";
+addOption(brand,"",t.brand);
+
+const brands=[...new Set(
+database.map(record=>record.brand).filter(Boolean)
+)].sort();
+
+brands.forEach(name=>{
+addOption(brand,name,name);
 });
 
-const year=document.getElementById("year");
-for(let y=2026;y>=1990;y--){
-const option=document.createElement("option");
-option.value=y;
-option.textContent=y;
-year.appendChild(option);
+}catch(error){
+
+brand.innerHTML="";
+addOption(brand,"",t.loadError);
+
+document.getElementById("searchResult").hidden=false;
+document.getElementById("searchResult").textContent=t.loadError;
+
 }
+
 }
 
 function loadModels(){
+
 const brand=document.getElementById("brand").value;
 const model=document.getElementById("model");
+const year=document.getElementById("year");
+
 model.innerHTML="";
-const placeholder=document.createElement("option");
-placeholder.value="";
-placeholder.textContent=translations[currentLang].model;
-model.appendChild(placeholder);
+year.innerHTML="";
+
+addOption(model,"",translations[currentLang].model);
+addOption(year,"",translations[currentLang].year);
 
 model.disabled=!brand;
+year.disabled=true;
 
-if(brand){
-carModels[brand].forEach(name=>{
-const option=document.createElement("option");
-option.value=name;
-option.textContent=name;
-model.appendChild(option);
+if(!brand)return;
+
+const models=[...new Set(
+database
+.filter(record=>record.brand===brand)
+.map(record=>record.model)
+.filter(Boolean)
+)].sort();
+
+models.forEach(name=>{
+addOption(model,name,name);
 });
+
 }
+
+function loadYears(){
+
+const brand=document.getElementById("brand").value;
+const model=document.getElementById("model").value;
+const year=document.getElementById("year");
+
+year.innerHTML="";
+addOption(year,"",translations[currentLang].year);
+
+year.disabled=!model;
+
+if(!model)return;
+
+const years=[...new Set(
+database
+.filter(record=>
+record.brand===brand &&
+record.model===model
+)
+.flatMap(record=>record.years||[])
+)].sort((a,b)=>b-a);
+
+years.forEach(value=>{
+addOption(year,String(value),String(value));
+});
+
 }
 
 function searchCar(){
+
 const brand=document.getElementById("brand").value;
 const model=document.getElementById("model").value;
 const year=document.getElementById("year").value;
+
 const box=document.getElementById("searchResult");
 const t=translations[currentLang];
 
@@ -261,11 +368,48 @@ box.textContent=t.missing;
 return;
 }
 
-box.textContent=
-t.found+" "+brand+" "+model+" ("+year+"). "+t.pending;
+const records=database.filter(record=>
+record.brand===brand &&
+record.model===model &&
+(record.years||[]).map(String).includes(year)
+);
+
+if(records.length===0){
+box.textContent=t.notFound;
+return;
+}
+
+box.innerHTML="";
+
+const title=document.createElement("h3");
+title.textContent=t.found;
+box.appendChild(title);
+
+records.forEach(record=>{
+
+const details=[
+brand+" "+model+" ("+year+")",
+t.keyType+": "+(record.key_type||"غير محدد"),
+t.reference+": "+(record.reference||"غير متوفر"),
+t.status+": "+(
+record.status==="verified"?t.verified:t.pending
+),
+t.source+": "+(record.source||"غير محدد"),
+record.notes||""
+];
+
+details.forEach(line=>{
+const p=document.createElement("p");
+p.textContent=line;
+box.appendChild(p);
+});
+
+});
+
 }
 
 function previewPhoto(){
+
 const file=document.getElementById("photo").files[0];
 const t=translations[currentLang];
 
@@ -282,17 +426,23 @@ return;
 const reader=new FileReader();
 
 reader.onload=function(e){
+
 const img=document.getElementById("preview");
 img.src=e.target.result;
 img.hidden=false;
-document.getElementById("result").textContent=t.uploaded;
+
+document.getElementById("photoResult").textContent=t.uploaded;
+
 };
 
 reader.readAsDataURL(file);
+
 }
 
 function changeLanguage(){
+
 currentLang=document.getElementById("language").value;
+
 const t=translations[currentLang];
 
 document.documentElement.lang=currentLang;
@@ -304,7 +454,7 @@ description:"description",
 owner:"owner",
 ownerText:"ownerText",
 searchTitle:"searchTitle",
-search:"searchButton",
+searchButton:"searchButton",
 photoText:"photoText",
 scan:"scan",
 pro:"pro",
@@ -316,15 +466,24 @@ Object.keys(ids).forEach(key=>{
 document.getElementById(ids[key]).textContent=t[key];
 });
 
-document.getElementById("brand").options[0].text=t.brand;
-document.getElementById("model").options[0].text=t.model;
-document.getElementById("year").options[0].text=t.year;
+loadDatabase();
 
-const result=document.getElementById("searchResult");
-if(!result.hidden) result.textContent="";
+document.getElementById("model").innerHTML="";
+addOption(document.getElementById("model"),"",t.model);
+
+document.getElementById("year").innerHTML="";
+addOption(document.getElementById("year"),"",t.year);
+
+document.getElementById("model").disabled=true;
+document.getElementById("year").disabled=true;
+
+document.getElementById("searchResult").hidden=true;
+
 }
 
-initialize();
+loadDatabase();
+
 </script>
+
 </body>
 </html>
