@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,12 +44,21 @@ padding:12px;
 border-radius:9px;
 width:100%;
 margin:12px 0;
+font-size:16px;
 }
 #preview{max-width:100%;border-radius:12px;margin-top:15px}
+#searchResult{
+background:#0b1c2d;
+padding:15px;
+border-radius:10px;
+margin-top:15px;
+line-height:1.8;
+}
 footer{padding:25px;color:#9cb5c9}
 </style>
 </head>
 <body>
+
 <header>
 <h1>🔑 AI CAR KEY</h1>
 <p>Global Car Key Recognition</p>
@@ -67,50 +76,255 @@ footer{padding:25px;color:#9cb5c9}
 <div class="card">
 <h3 id="owner">🚘 قسم أصحاب السيارات</h3>
 <p id="ownerText">حمّل صورة مفتاح سيارتك للتعرف على شكله.</p>
-<input type="file" accept="image/*" capture="environment" id="photo">
-<button onclick="previewPhoto()" id="scan">اختيار وتصوير المفتاح</button>
+
+<h3 id="searchTitle">ابحث عن مفتاح سيارتك</h3>
+
+<select id="brand" onchange="loadModels()">
+<option value="">اختر ماركة السيارة</option>
+</select>
+
+<select id="model" disabled>
+<option value="">اختر الموديل</option>
+</select>
+
+<select id="year">
+<option value="">اختر سنة الصنع</option>
+</select>
+
+<button onclick="searchCar()" id="searchButton">
+ابحث عن المفتاح
+</button>
+
+<div id="searchResult" hidden></div>
+
+<hr style="border-color:#25465f;margin:25px 0">
+
+<p id="photoText">أو صوّر مفتاح سيارتك</p>
+
+<input type="file" accept="image/*"
+capture="environment" id="photo">
+
+<button onclick="previewPhoto()" id="scan">
+اختيار وتصوير المفتاح
+</button>
+
 <img id="preview" hidden>
 <p id="result"></p>
 </div>
 
 <div class="card">
 <h3 id="pro">🛠️ قسم المحترفين</h3>
-<p id="proText">خدمات ومعلومات فنية لمحترفي مفاتيح السيارات.</p>
-<button onclick="alert('قريباً: قسم المحترفين')">Professional Area</button>
+<p id="proText">
+خدمات ومعلومات فنية لمحترفي مفاتيح السيارات.
+</p>
+<button onclick="alert(translations[currentLang].coming)"
+id="proButton">Professional Area</button>
 </div>
+
 </main>
 
 <footer>AI CAR KEY © 2026</footer>
 
 <script>
+const carModels={
+Toyota:["Corolla","Yaris","Camry","RAV4","Hilux","Land Cruiser"],
+Mercedes:["A-Class","C-Class","E-Class","S-Class","GLC"],
+BMW:["Series 1","Series 3","Series 5","X1","X3","X5"],
+Renault:["Clio","Megane","Captur","Kadjar","Kangoo"],
+Volkswagen:["Golf","Polo","Passat","Tiguan","Touareg"],
+Peugeot:["208","308","2008","3008","508"],
+Hyundai:["i10","i20","i30","Tucson","Santa Fe"],
+Kia:["Picanto","Rio","Ceed","Sportage","Sorento"]
+};
+
+const translations={
+ar:{
+welcome:"مرحباً بك في AI CAR KEY",
+description:"منصة ذكية للتعرف على مفاتيح السيارات",
+owner:"🚘 قسم أصحاب السيارات",
+ownerText:"حمّل صورة مفتاح سيارتك للتعرف على شكله.",
+searchTitle:"ابحث عن مفتاح سيارتك",
+brand:"اختر ماركة السيارة",
+model:"اختر الموديل",
+year:"اختر سنة الصنع",
+search:"ابحث عن المفتاح",
+photoText:"أو صوّر مفتاح سيارتك",
+scan:"اختيار وتصوير المفتاح",
+pro:"🛠️ قسم المحترفين",
+proText:"خدمات ومعلومات فنية لمحترفي مفاتيح السيارات.",
+proButton:"قسم المحترفين",
+coming:"قسم المحترفين قيد التطوير",
+missing:"الرجاء اختيار الماركة والموديل والسنة.",
+found:"بيانات السيارة التي اخترتها:",
+pending:"قاعدة بيانات توافق المفاتيح قيد الإنشاء. لم يتم تأكيد نوع المفتاح بعد.",
+uploaded:"تم تحميل الصورة بنجاح. التعرف الذكي سيضاف في المرحلة القادمة.",
+noPhoto:"الرجاء اختيار صورة المفتاح."
+},
+fr:{
+welcome:"Bienvenue sur AI CAR KEY",
+description:"Plateforme intelligente de reconnaissance des clés automobiles",
+owner:"🚘 Espace propriétaires",
+ownerText:"Importez une photo de votre clé de voiture.",
+searchTitle:"Rechercher votre clé",
+brand:"Choisir la marque",
+model:"Choisir le modèle",
+year:"Choisir l'année",
+search:"Rechercher la clé",
+photoText:"Ou photographiez votre clé",
+scan:"Choisir ou photographier la clé",
+pro:"🛠️ Espace professionnels",
+proText:"Services et informations pour les professionnels.",
+proButton:"Espace professionnels",
+coming:"Espace professionnels bientôt disponible",
+missing:"Veuillez choisir la marque, le modèle et l'année.",
+found:"Informations sur le véhicule sélectionné :",
+pending:"La base de compatibilité des clés est en cours de création. La clé n'est pas encore identifiée.",
+uploaded:"Image téléchargée. La reconnaissance intelligente sera ajoutée prochainement.",
+noPhoto:"Veuillez choisir une photo."
+},
+en:{
+welcome:"Welcome to AI CAR KEY",
+description:"Smart car key recognition platform",
+owner:"🚘 Car Owners",
+ownerText:"Upload a photo of your car key.",
+searchTitle:"Search for your car key",
+brand:"Select car brand",
+model:"Select model",
+year:"Select year",
+search:"Search for key",
+photoText:"Or photograph your car key",
+scan:"Choose or photograph key",
+pro:"🛠️ Professionals",
+proText:"Services and technical information for professionals.",
+proButton:"Professional Area",
+coming:"Professional area coming soon",
+missing:"Please select brand, model and year.",
+found:"Selected vehicle information:",
+pending:"The key compatibility database is being built. The key type has not yet been verified.",
+uploaded:"Image uploaded successfully. Smart recognition will be added in a future stage.",
+noPhoto:"Please select a key photo."
+}
+};
+
+let currentLang="ar";
+
+function initialize(){
+const brand=document.getElementById("brand");
+Object.keys(carModels).forEach(name=>{
+const option=document.createElement("option");
+option.value=name;
+option.textContent=name;
+brand.appendChild(option);
+});
+
+const year=document.getElementById("year");
+for(let y=2026;y>=1990;y--){
+const option=document.createElement("option");
+option.value=y;
+option.textContent=y;
+year.appendChild(option);
+}
+}
+
+function loadModels(){
+const brand=document.getElementById("brand").value;
+const model=document.getElementById("model");
+model.innerHTML="";
+const placeholder=document.createElement("option");
+placeholder.value="";
+placeholder.textContent=translations[currentLang].model;
+model.appendChild(placeholder);
+
+model.disabled=!brand;
+
+if(brand){
+carModels[brand].forEach(name=>{
+const option=document.createElement("option");
+option.value=name;
+option.textContent=name;
+model.appendChild(option);
+});
+}
+}
+
+function searchCar(){
+const brand=document.getElementById("brand").value;
+const model=document.getElementById("model").value;
+const year=document.getElementById("year").value;
+const box=document.getElementById("searchResult");
+const t=translations[currentLang];
+
+box.hidden=false;
+
+if(!brand||!model||!year){
+box.textContent=t.missing;
+return;
+}
+
+box.textContent=
+t.found+" "+brand+" "+model+" ("+year+"). "+t.pending;
+}
+
 function previewPhoto(){
-const file=document.getElementById('photo').files[0];
-if(!file){alert('الرجاء اختيار صورة المفتاح');return;}
+const file=document.getElementById("photo").files[0];
+const t=translations[currentLang];
+
+if(!file){
+alert(t.noPhoto);
+return;
+}
+
+if(!file.type.startsWith("image/")){
+alert(t.noPhoto);
+return;
+}
+
 const reader=new FileReader();
+
 reader.onload=function(e){
-const img=document.getElementById('preview');
+const img=document.getElementById("preview");
 img.src=e.target.result;
 img.hidden=false;
-document.getElementById('result').textContent=
-'تم تحميل الصورة بنجاح. التعرف الذكي على المفتاح سيضاف في المرحلة القادمة.';
+document.getElementById("result").textContent=t.uploaded;
 };
+
 reader.readAsDataURL(file);
 }
 
 function changeLanguage(){
-const lang=document.getElementById('language').value;
-const translations={
-ar:['مرحباً بك في AI CAR KEY','منصة ذكية للتعرف على مفاتيح السيارات','🚘 قسم أصحاب السيارات','حمّل صورة مفتاح سيارتك للتعرف على شكله.','اختيار وتصوير المفتاح','🛠️ قسم المحترفين','خدمات ومعلومات فنية لمحترفي مفاتيح السيارات.'],
-fr:['Bienvenue sur AI CAR KEY','Plateforme intelligente de reconnaissance des clés automobiles','🚘 Espace propriétaires','Importez une photo de votre clé de voiture.','Choisir ou photographier la clé','🛠️ Espace professionnels','Services et informations pour les professionnels.'],
-en:['Welcome to AI CAR KEY','Smart car key recognition platform','🚘 Car Owners','Upload a photo of your car key.','Choose or photograph key','🛠️ Professionals','Services and technical information for professionals.']
+currentLang=document.getElementById("language").value;
+const t=translations[currentLang];
+
+document.documentElement.lang=currentLang;
+document.documentElement.dir=currentLang==="ar"?"rtl":"ltr";
+
+const ids={
+welcome:"welcome",
+description:"description",
+owner:"owner",
+ownerText:"ownerText",
+searchTitle:"searchTitle",
+search:"searchButton",
+photoText:"photoText",
+scan:"scan",
+pro:"pro",
+proText:"proText",
+proButton:"proButton"
 };
-const t=translations[lang];
-['welcome','description','owner','ownerText','scan','pro','proText'].forEach((id,i)=>{
-document.getElementById(id).textContent=t[i];
+
+Object.keys(ids).forEach(key=>{
+document.getElementById(ids[key]).textContent=t[key];
 });
-document.documentElement.lang=lang;
-document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+
+document.getElementById("brand").options[0].text=t.brand;
+document.getElementById("model").options[0].text=t.model;
+document.getElementById("year").options[0].text=t.year;
+
+const result=document.getElementById("searchResult");
+if(!result.hidden) result.textContent="";
 }
+
+initialize();
 </script>
 </body>
 </html>
