@@ -1,1 +1,116 @@
-index.html
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI CAR KEY - Global</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#081321;
+color:white;
+text-align:center;
+}
+header{
+padding:25px 15px;
+background:#10243a;
+border-bottom:2px solid #16b8d4;
+}
+h1{color:#20d5ef;margin:10px}
+main{padding:22px 15px;max-width:650px;margin:auto}
+.card{
+background:#13283e;
+padding:22px;
+margin:18px 0;
+border-radius:16px;
+border:1px solid #25465f;
+}
+button{
+background:#12bcd5;
+color:#061522;
+border:0;
+padding:14px 22px;
+border-radius:10px;
+font-weight:bold;
+font-size:16px;
+margin:8px;
+cursor:pointer;
+}
+select,input{
+padding:12px;
+border-radius:9px;
+width:100%;
+margin:12px 0;
+}
+#preview{max-width:100%;border-radius:12px;margin-top:15px}
+footer{padding:25px;color:#9cb5c9}
+</style>
+</head>
+<body>
+<header>
+<h1>🔑 AI CAR KEY</h1>
+<p>Global Car Key Recognition</p>
+<select id="language" onchange="changeLanguage()">
+<option value="ar">العربية</option>
+<option value="fr">Français</option>
+<option value="en">English</option>
+</select>
+</header>
+
+<main>
+<h2 id="welcome">مرحباً بك في AI CAR KEY</h2>
+<p id="description">منصة ذكية للتعرف على مفاتيح السيارات</p>
+
+<div class="card">
+<h3 id="owner">🚘 قسم أصحاب السيارات</h3>
+<p id="ownerText">حمّل صورة مفتاح سيارتك للتعرف على شكله.</p>
+<input type="file" accept="image/*" capture="environment" id="photo">
+<button onclick="previewPhoto()" id="scan">اختيار وتصوير المفتاح</button>
+<img id="preview" hidden>
+<p id="result"></p>
+</div>
+
+<div class="card">
+<h3 id="pro">🛠️ قسم المحترفين</h3>
+<p id="proText">خدمات ومعلومات فنية لمحترفي مفاتيح السيارات.</p>
+<button onclick="alert('قريباً: قسم المحترفين')">Professional Area</button>
+</div>
+</main>
+
+<footer>AI CAR KEY © 2026</footer>
+
+<script>
+function previewPhoto(){
+const file=document.getElementById('photo').files[0];
+if(!file){alert('الرجاء اختيار صورة المفتاح');return;}
+const reader=new FileReader();
+reader.onload=function(e){
+const img=document.getElementById('preview');
+img.src=e.target.result;
+img.hidden=false;
+document.getElementById('result').textContent=
+'تم تحميل الصورة بنجاح. التعرف الذكي على المفتاح سيضاف في المرحلة القادمة.';
+};
+reader.readAsDataURL(file);
+}
+
+function changeLanguage(){
+const lang=document.getElementById('language').value;
+const translations={
+ar:['مرحباً بك في AI CAR KEY','منصة ذكية للتعرف على مفاتيح السيارات','🚘 قسم أصحاب السيارات','حمّل صورة مفتاح سيارتك للتعرف على شكله.','اختيار وتصوير المفتاح','🛠️ قسم المحترفين','خدمات ومعلومات فنية لمحترفي مفاتيح السيارات.'],
+fr:['Bienvenue sur AI CAR KEY','Plateforme intelligente de reconnaissance des clés automobiles','🚘 Espace propriétaires','Importez une photo de votre clé de voiture.','Choisir ou photographier la clé','🛠️ Espace professionnels','Services et informations pour les professionnels.'],
+en:['Welcome to AI CAR KEY','Smart car key recognition platform','🚘 Car Owners','Upload a photo of your car key.','Choose or photograph key','🛠️ Professionals','Services and technical information for professionals.']
+};
+const t=translations[lang];
+['welcome','description','owner','ownerText','scan','pro','proText'].forEach((id,i)=>{
+document.getElementById(id).textContent=t[i];
+});
+document.documentElement.lang=lang;
+document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+}
+</script>
+</body>
+</html>
