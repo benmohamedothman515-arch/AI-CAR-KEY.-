@@ -1,18 +1,16 @@
-
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07111f">
-<meta name="description" content="AI CAR KEY - Smart automotive key information and digital key compatibility.">
+<meta name="description" content="AI CAR KEY - Smart automotive key information.">
 <title>AI CAR KEY.tn | Smart Automotive Technology</title>
 
 <style>
 :root {
   --bg:#050b14;
   --panel:#0d192a;
-  --panel2:#101f34;
   --blue:#168cff;
   --cyan:#39c5ff;
   --text:#f4f8ff;
@@ -21,174 +19,105 @@
 }
 *{box-sizing:border-box}
 body{
- margin:0;
- background:radial-gradient(ellipse at 50% 0%,#102b4b 0%,#07111f 48%,#030812 100%);
- color:var(--text);
- font-family:Arial,sans-serif;
- min-height:100vh;
+  margin:0;
+  background:radial-gradient(ellipse at 50% 0%,#102b4b 0%,#07111f 48%,#030812 100%);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  min-height:100vh;
 }
 header{
- padding:22px 16px 30px;
- text-align:center;
- border-bottom:1px solid var(--border);
- background:rgba(5,13,25,.78);
+  padding:22px 16px 30px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  background:rgba(5,13,25,.78);
 }
 .logo{
- font-size:32px;
- font-weight:900;
- letter-spacing:1px;
- color:white;
- text-shadow:0 0 18px rgba(22,140,255,.8);
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:1px;
+  color:white;
+  text-shadow:0 0 18px rgba(22,140,255,.8);
 }
 .logo span{color:var(--cyan)}
-.tagline{
- color:var(--muted);
- margin:9px 0 18px;
- font-size:14px;
-}
-#language{
- width:auto;
- min-width:150px;
- padding:10px 15px;
-}
-main{
- max-width:850px;
- margin:28px auto;
- padding:0 15px;
-}
-.hero{
- text-align:center;
- padding:25px 15px 30px;
-}
+.tagline{color:var(--muted);margin:9px 0 18px;font-size:14px}
+#language{width:auto;min-width:150px;padding:10px 15px}
+main{max-width:850px;margin:28px auto;padding:0 15px}
+.hero{text-align:center;padding:25px 15px 30px}
 .hero-icon{
- width:82px;
- height:82px;
- margin:0 auto 15px;
- border-radius:24px;
- display:grid;
- place-items:center;
- font-size:38px;
- background:linear-gradient(145deg,#102d50,#071426);
- border:1px solid #247dce;
- box-shadow:0 0 30px rgba(22,140,255,.25);
+  width:82px;height:82px;margin:0 auto 15px;
+  border-radius:24px;display:grid;place-items:center;
+  font-size:38px;background:linear-gradient(145deg,#102d50,#071426);
+  border:1px solid #247dce;box-shadow:0 0 30px rgba(22,140,255,.25);
 }
-.hero h2{
- font-size:27px;
- margin:10px 0;
- color:white;
-}
-.hero p{
- color:var(--muted);
- line-height:1.8;
- max-width:530px;
- margin:auto;
-}
+.hero h2{font-size:27px;margin:10px 0;color:white}
+.hero p{color:var(--muted);line-height:1.8;max-width:530px;margin:auto}
 .card{
- background:linear-gradient(145deg,rgba(17,34,56,.98),rgba(8,19,33,.98));
- border:1px solid var(--border);
- border-radius:20px;
- padding:23px;
- margin-bottom:20px;
- box-shadow:0 12px 35px rgba(0,0,0,.25);
+  background:linear-gradient(145deg,rgba(17,34,56,.98),rgba(8,19,33,.98));
+  border:1px solid var(--border);border-radius:20px;
+  padding:23px;margin-bottom:20px;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
 }
-.card h2{
- color:var(--cyan);
- margin-top:0;
- font-size:21px;
-}
-.description{
- color:var(--muted);
- line-height:1.7;
-}
-label{
- display:block;
- margin:17px 0 8px;
- font-size:14px;
- color:#d7e8ff;
-}
+.card h2{color:var(--cyan);margin-top:0;font-size:21px}
+.description{color:var(--muted);line-height:1.7}
+label{display:block;margin:17px 0 8px;font-size:14px;color:#d7e8ff}
 select,input{
- width:100%;
- padding:14px;
- border:1px solid #29496c;
- border-radius:11px;
- background:#071321;
- color:white;
- font-size:16px;
- outline:none;
+  width:100%;padding:14px;border:1px solid #29496c;
+  border-radius:11px;background:#071321;color:white;
+  font-size:16px;outline:none;
 }
 select:focus,input:focus{
- border-color:var(--cyan);
- box-shadow:0 0 0 3px rgba(57,197,255,.12);
+  border-color:var(--cyan);
+  box-shadow:0 0 0 3px rgba(57,197,255,.12);
 }
 input[type=file]{font-size:14px}
 button{
- width:100%;
- padding:15px;
- margin-top:20px;
- border:1px solid #54bfff;
- border-radius:12px;
- background:linear-gradient(100deg,#0878ed,#21b7ff);
- color:white;
- font-size:16px;
- font-weight:bold;
- cursor:pointer;
- box-shadow:0 0 22px rgba(22,140,255,.22);
- transition:.2s;
+  width:100%;padding:15px;margin-top:20px;
+  border:1px solid #54bfff;border-radius:12px;
+  background:linear-gradient(100deg,#0878ed,#21b7ff);
+  color:white;font-size:16px;font-weight:bold;cursor:pointer;
+  box-shadow:0 0 22px rgba(22,140,255,.22);
+  transition:.2s;
 }
-button:hover{
- transform:translateY(-2px);
- box-shadow:0 0 28px rgba(22,140,255,.4);
-}
-button:active{transform:scale(.99)}
+button:hover{transform:translateY(-2px)}
 #preview{
- display:none;
- max-width:100%;
- max-height:260px;
- object-fit:contain;
- margin:16px auto;
- border-radius:14px;
- border:1px solid var(--border);
+  display:none;max-width:100%;max-height:260px;
+  object-fit:contain;margin:16px auto;border-radius:14px;
+  border:1px solid var(--border);
 }
 #result{
- margin-top:18px;
- padding:15px;
- min-height:55px;
- background:#06111f;
- border:1px solid var(--border);
- border-radius:12px;
- line-height:1.8;
- overflow-wrap:anywhere;
+  margin-top:18px;padding:16px;min-height:55px;
+  background:#06111f;border:1px solid var(--border);
+  border-radius:12px;line-height:1.8;overflow-wrap:anywhere;
 }
-#result p{margin:7px 0}
-.small{
- color:var(--muted);
- font-size:12px;
- line-height:1.7;
+#result p{margin:8px 0}
+.result-title{color:var(--cyan);font-weight:bold;font-size:18px}
+.result-row strong{color:#d7e8ff}
+.status-warning{
+  margin-top:13px;padding:12px;border-radius:9px;
+  background:rgba(255,174,0,.09);
+  border:1px solid rgba(255,174,0,.35);
+  color:#ffd58a;
 }
-.pro-box{
- text-align:center;
- padding:25px 18px;
+.status-ok{
+  margin-top:13px;padding:12px;border-radius:9px;
+  background:rgba(30,190,120,.09);
+  border:1px solid rgba(30,190,120,.35);
+  color:#8af0bd;
 }
-.pro-symbol{
- font-size:32px;
- margin-bottom:10px;
-}
+.source-link{color:var(--cyan);text-decoration:underline}
+.small{color:var(--muted);font-size:12px;line-height:1.7}
+.pro-box{text-align:center;padding:25px 18px}
+.pro-symbol{font-size:32px;margin-bottom:10px}
 footer{
- text-align:center;
- padding:28px 15px;
- color:#7389a5;
- font-size:12px;
- border-top:1px solid var(--border);
+  text-align:center;padding:28px 15px;color:#7389a5;
+  font-size:12px;border-top:1px solid var(--border);
 }
-.footer-brand{
- color:var(--cyan);
- font-weight:bold;
-}
+.footer-brand{color:var(--cyan);font-weight:bold}
 @media(max-width:500px){
- .logo{font-size:27px}
- .hero h2{font-size:23px}
- .card{padding:18px}
- main{margin-top:12px}
+  .logo{font-size:27px}
+  .hero h2{font-size:23px}
+  .card{padding:18px}
+  main{margin-top:12px}
 }
 </style>
 </head>
@@ -196,74 +125,71 @@ footer{
 <body>
 
 <header>
- <div class="logo">AI CAR <span>KEY</span><small style="font-size:13px;color:#39c5ff">.tn</small></div>
- <p class="tagline" id="subtitle">تقنية ذكية لعالم السيارات</p>
- <select id="language" aria-label="Language">
-  <option value="ar">العربية</option>
-  <option value="fr">Français</option>
-  <option value="en">English</option>
- </select>
+  <div class="logo">AI CAR <span>KEY</span><small style="font-size:13px;color:#39c5ff">.tn</small></div>
+  <p class="tagline" id="subtitle">تقنية ذكية لعالم السيارات</p>
+
+  <select id="language" aria-label="Language">
+    <option value="ar">العربية</option>
+    <option value="fr">Français</option>
+    <option value="en">English</option>
+  </select>
 </header>
 
 <main>
 
 <section class="hero">
- <div class="hero-icon">🚘</div>
- <h2 id="heroTitle">سيارتك. هاتفك. تحكمك.</h2>
- <p id="heroText">منصة ذكية لمعلومات مفاتيح السيارات والتحقق من توافق المفتاح الرقمي.</p>
+  <div class="hero-icon">🚘</div>
+  <h2 id="heroTitle">سيارتك. هاتفك. تحكمك.</h2>
+  <p id="heroText">منصة ذكية لمعلومات مفاتيح السيارات والتحقق من توافق المفتاح الرقمي.</p>
 </section>
 
 <section class="card">
- <h2 id="ownerTitle">أصحاب السيارات</h2>
- <p class="description" id="ownerText">اختر صورة مفتاح سيارتك وحدد بيانات السيارة للبحث.</p>
+  <h2 id="ownerTitle">أصحاب السيارات</h2>
+  <p class="description" id="ownerText">اختر صورة مفتاح سيارتك وحدد بيانات السيارة للبحث.</p>
 
- <label id="photoLabel" for="photo">صورة المفتاح</label>
- <input type="file" id="photo" accept="image/*">
- <img id="preview" alt="Key photo preview">
+  <label id="photoLabel" for="photo">صورة المفتاح</label>
+  <input type="file" id="photo" accept="image/*">
+  <img id="preview" alt="Key photo preview">
 
- <label id="brandLabel" for="brand">ماركة السيارة</label>
- <select id="brand">
-  <option value="">جاري تحميل البيانات...</option>
- </select>
+  <label id="brandLabel" for="brand">ماركة السيارة</label>
+  <select id="brand">
+    <option value="">جاري تحميل البيانات...</option>
+  </select>
 
- <label id="modelLabel" for="model">موديل السيارة</label>
- <select id="model" disabled>
-  <option value="">اختر الموديل</option>
- </select>
+  <label id="modelLabel" for="model">موديل السيارة</label>
+  <select id="model" disabled>
+    <option value="">اختر الموديل</option>
+  </select>
 
- <label id="yearLabel" for="year">سنة الصنع</label>
- <select id="year" disabled>
-  <option value="">اختر السنة</option>
- </select>
+  <label id="yearLabel" for="year">سنة الصنع</label>
+  <select id="year" disabled>
+    <option value="">اختر السنة</option>
+  </select>
 
- <button id="searchCar">ابحث عن بيانات المفتاح</button>
+  <button id="searchCar">ابحث عن بيانات المفتاح</button>
 
- <div id="result" role="status" aria-live="polite">
-  جاري تحميل قاعدة البيانات...
- </div>
+  <div id="result" role="status" aria-live="polite">
+    جاري تحميل قاعدة البيانات...
+  </div>
 
- <p class="small" id="notice">
-  المعلومات غير المؤكدة لا تثبت توافق المفتاح مع السيارة.
- </p>
+  <p class="small" id="notice">
+    المعلومات غير المؤكدة لا تثبت توافق المفتاح مع السيارة.
+  </p>
 </section>
 
 <section class="card pro-box">
- <div class="pro-symbol">🛠️</div>
- <h2 id="proTitle">قسم المحترفين</h2>
- <p class="description" id="proText">
-  مساحة مخصصة لفنيي مفاتيح السيارات والمحترفين.
- </p>
- <p class="small" id="proNote">
-  أدوات المحترفين والخدمات المتقدمة قيد التطوير.
- </p>
+  <div class="pro-symbol">🛠️</div>
+  <h2 id="proTitle">قسم المحترفين</h2>
+  <p class="description" id="proText">مساحة مخصصة لفنيي مفاتيح السيارات والمحترفين.</p>
+  <p class="small" id="proNote">أدوات المحترفين والخدمات المتقدمة قيد التطوير.</p>
 </section>
 
 </main>
 
 <footer>
- <div class="footer-brand">AI CAR KEY.tn</div>
- <p id="footerText">Technology You Can Trust</p>
- © 2026 AI CAR KEY
+  <div class="footer-brand">AI CAR KEY.tn</div>
+  <p id="footerText">تقنية يمكنك الوثوق بها.</p>
+  © 2026 AI CAR KEY
 </footer>
 
 <script>
@@ -291,18 +217,27 @@ verified:"تم التحقق من السجل",
 unverified:"هذا السجل يحتاج إلى التحقق. توافق المفتاح غير مؤكد.",
 keyType:"نوع المفتاح",
 reference:"المرجع",
+chassis:"رقم الشاسيه / السلسلة",
+buttons:"عدد الأزرار",
+transponder:"نوع الشريحة الإلكترونية",
+blade:"شفرة النصل",
+frequency:"التردد",
+source:"الوثيقة المرجعية",
 notAvailable:"غير متوفر",
-notice:"المعلومات غير المؤكدة لا تثبت توافق المفتاح مع السيارة.",
+notice:"المعلومات غير المؤكدة لا تثبت توافق المفتاح مع السيارة. يجب التحقق من الشاسيه والسوق ونوع المفتاح الفعلي.",
 proTitle:"قسم المحترفين",
 proText:"مساحة مخصصة لفنيي مفاتيح السيارات والمحترفين.",
 proNote:"أدوات المحترفين والخدمات المتقدمة قيد التطوير.",
 photoReady:"تم اختيار الصورة. لم يتم التعرف على المفتاح تلقائيًا.",
+sourceOpen:"فتح الوثيقة المرجعية",
+sourceSilca:"وثيقة Silca - يناير 2026",
+sourceNews:"وثيقة Silca - مارس 2026",
 footerText:"تقنية يمكنك الوثوق بها."
 },
 fr:{
 subtitle:"Technologie intelligente pour l'automobile",
 heroTitle:"Votre voiture. Votre téléphone. Votre contrôle.",
-heroText:"Une plateforme intelligente pour les informations sur les clés et la compatibilité des clés numériques.",
+heroText:"Une plateforme intelligente pour les informations sur les clés et la compatibilité numérique.",
 ownerTitle:"Propriétaires de voitures",
 ownerText:"Ajoutez une photo de votre clé et sélectionnez votre véhicule.",
 photoLabel:"Photo de la clé",
@@ -322,12 +257,21 @@ verified:"Enregistrement vérifié",
 unverified:"Enregistrement à vérifier. Compatibilité non confirmée.",
 keyType:"Type de clé",
 reference:"Référence",
+chassis:"Châssis / Série",
+buttons:"Nombre de boutons",
+transponder:"Transpondeur",
+blade:"Lame",
+frequency:"Fréquence",
+source:"Document de référence",
 notAvailable:"Non disponible",
-notice:"Les informations non vérifiées ne confirment pas la compatibilité.",
+notice:"Les informations non vérifiées ne confirment pas la compatibilité. Vérifiez le châssis, le marché et la clé installée.",
 proTitle:"Espace professionnels",
 proText:"Espace destiné aux techniciens et professionnels.",
 proNote:"Les outils professionnels sont en cours de développement.",
 photoReady:"Photo sélectionnée. La clé n'a pas été identifiée automatiquement.",
+sourceOpen:"Ouvrir le document",
+sourceSilca:"Document Silca - janvier 2026",
+sourceNews:"Document Silca - mars 2026",
 footerText:"Une technologie de confiance."
 },
 en:{
@@ -353,218 +297,330 @@ verified:"Verified record",
 unverified:"This record needs verification. Compatibility is not confirmed.",
 keyType:"Key type",
 reference:"Reference",
+chassis:"Chassis / Series",
+buttons:"Number of buttons",
+transponder:"Transponder",
+blade:"Blade",
+frequency:"Frequency",
+source:"Reference document",
 notAvailable:"Not available",
-notice:"Unverified information does not confirm compatibility.",
+notice:"Unverified information does not confirm compatibility. Check the chassis, market and actual installed key.",
 proTitle:"Professional section",
 proText:"For automotive key technicians and professionals.",
 proNote:"Professional tools are under development.",
 photoReady:"Photo selected. The key has not been automatically identified.",
+sourceOpen:"Open reference document",
+sourceSilca:"Silca document - January 2026",
+sourceNews:"Silca document - March 2026",
 footerText:"Technology You Can Trust."
 }
 };
 
 let database = null;
 let currentLanguage = "ar";
+
 const $ = id => document.getElementById(id);
 
 function setOption(select,value,label){
- select.replaceChildren();
- const option=document.createElement("option");
- option.value=value;
- option.textContent=label;
- select.appendChild(option);
+  select.replaceChildren();
+  const option = document.createElement("option");
+  option.value = value;
+  option.textContent = label;
+  select.appendChild(option);
 }
 
 function changeLanguage(lang){
- currentLanguage=lang;
- const t=translations[lang];
- document.documentElement.lang=lang;
- document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+  currentLanguage = lang;
+  const t = translations[lang];
 
- [
- "subtitle","heroTitle","heroText","ownerTitle","ownerText",
- "photoLabel","brandLabel","modelLabel","yearLabel",
- "searchCar","notice","proTitle","proText","proNote","footerText"
- ].forEach(id=>$(id).textContent=t[id]);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
- const oldBrand=$("brand").value;
- const oldModel=$("model").value;
- const oldYear=$("year").value;
+  [
+    "subtitle","heroTitle","heroText","ownerTitle","ownerText",
+    "photoLabel","brandLabel","modelLabel","yearLabel",
+    "searchCar","notice","proTitle","proText","proNote","footerText"
+  ].forEach(id => $(id).textContent = t[id]);
 
- fillBrands(oldBrand);
- if(oldBrand){
-  $("brand").value=oldBrand;
-  fillModels(oldModel);
- }
- if(oldModel){
-  $("model").value=oldModel;
-  fillYears(oldYear);
- }
+  const oldBrand = $("brand").value;
+  const oldModel = $("model").value;
+  const oldYear = $("year").value;
+
+  fillBrands(oldBrand);
+
+  if(oldBrand){
+    $("brand").value = oldBrand;
+    fillModels(oldModel);
+  }
+
+  if(oldModel){
+    $("model").value = oldModel;
+    fillYears(oldYear);
+  }
 }
 
-function fillBrands(selected=""){
- const t=translations[currentLanguage];
- setOption($("brand"),"",t.brandPlaceholder);
- if(!database)return;
+function fillBrands(selected = ""){
+  const t = translations[currentLanguage];
+  setOption($("brand"),"",t.brandPlaceholder);
 
- const brands=[...new Set(
-  database.records.map(r=>r.brand).filter(Boolean)
- )].sort();
+  if(!database) return;
 
- brands.forEach(name=>{
-  const option=document.createElement("option");
-  option.value=name;
-  option.textContent=name;
-  $("brand").appendChild(option);
- });
- $("brand").value=selected;
+  const brands = [...new Set(
+    database.records.map(r => r.brand).filter(Boolean)
+  )].sort();
+
+  brands.forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    $("brand").appendChild(option);
+  });
+
+  $("brand").value = selected;
 }
 
-function fillModels(selected=""){
- const t=translations[currentLanguage];
- setOption($("model"),"",t.modelPlaceholder);
- setOption($("year"),"",t.yearPlaceholder);
- $("model").disabled=true;
- $("year").disabled=true;
+function fillModels(selected = ""){
+  const t = translations[currentLanguage];
 
- const brand=$("brand").value;
- if(!brand||!database)return;
+  setOption($("model"),"",t.modelPlaceholder);
+  setOption($("year"),"",t.yearPlaceholder);
 
- const models=[...new Set(
-  database.records.filter(r=>r.brand===brand).map(r=>r.model)
- )];
+  $("model").disabled = true;
+  $("year").disabled = true;
 
- models.forEach(name=>{
-  const option=document.createElement("option");
-  option.value=name;
-  option.textContent=name;
-  $("model").appendChild(option);
- });
+  const brand = $("brand").value;
+  if(!brand || !database) return;
 
- $("model").disabled=false;
- if(selected&&models.includes(selected)){
-  $("model").value=selected;
-  fillYears();
- }
+  const models = [...new Set(
+    database.records
+      .filter(r => r.brand === brand)
+      .map(r => r.model)
+  )].sort();
+
+  models.forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    $("model").appendChild(option);
+  });
+
+  $("model").disabled = false;
+
+  if(selected && models.includes(selected)){
+    $("model").value = selected;
+    fillYears();
+  }
 }
 
-function fillYears(selected=""){
- const t=translations[currentLanguage];
- setOption($("year"),"",t.yearPlaceholder);
- $("year").disabled=true;
+function fillYears(selected = ""){
+  const t = translations[currentLanguage];
 
- if(!database)return;
+  setOption($("year"),"",t.yearPlaceholder);
+  $("year").disabled = true;
 
- const matches=database.records.filter(r=>
-  r.brand===$("brand").value &&
-  r.model===$("model").value
- );
+  if(!database) return;
 
- const years=[...new Set(matches.flatMap(r=>
-  Array.isArray(r.years)?r.years:[]
- ))].sort((a,b)=>a-b);
+  const matches = database.records.filter(r =>
+    r.brand === $("brand").value &&
+    r.model === $("model").value
+  );
 
- years.forEach(year=>{
-  const option=document.createElement("option");
-  option.value=String(year);
-  option.textContent=String(year);
-  $("year").appendChild(option);
- });
+  const years = [...new Set(
+    matches.flatMap(r => Array.isArray(r.years) ? r.years : [])
+  )].sort((a,b) => a-b);
 
- $("year").disabled=false;
- if(selected&&years.includes(Number(selected))){
-  $("year").value=String(selected);
- }
+  years.forEach(year => {
+    const option = document.createElement("option");
+    option.value = String(year);
+    option.textContent = String(year);
+    $("year").appendChild(option);
+  });
+
+  $("year").disabled = false;
+
+  if(selected && years.includes(Number(selected))){
+    $("year").value = String(selected);
+  }
 }
 
 async function loadDatabase(){
- $("result").textContent=translations[currentLanguage].loading;
- try{
-  const response=await fetch("./database.json",{cache:"no-store"});
-  if(!response.ok)throw new Error("Database not found");
+  $("result").textContent = translations[currentLanguage].loading;
 
-  const data=await response.json();
-  if(!data||!Array.isArray(data.records)){
-   throw new Error("Invalid database");
+  try{
+    const response = await fetch("./database.json",{cache:"no-store"});
+
+    if(!response.ok) throw new Error("Database not found");
+
+    const data = await response.json();
+
+    if(!data || !Array.isArray(data.records)){
+      throw new Error("Invalid database");
+    }
+
+    database = data;
+    fillBrands();
+
+    $("result").textContent = translations[currentLanguage].loading;
+
+  }catch(error){
+    database = null;
+    $("result").textContent = translations[currentLanguage].loadError;
   }
-
-  database=data;
-  fillBrands();
-  $("result").textContent=translations[currentLanguage].loading;
- }catch(error){
-  database=null;
-  $("result").textContent=translations[currentLanguage].loadError;
- }
 }
 
-$("brand").addEventListener("change",()=>fillModels());
-$("model").addEventListener("change",()=>fillYears());
+function addResultRow(label,value){
+  const p = document.createElement("p");
+  p.className = "result-row";
 
-$("language").addEventListener("change",e=>{
- changeLanguage(e.target.value);
-});
+  const strong = document.createElement("strong");
+  strong.textContent = label + ": ";
 
-$("photo").addEventListener("change",e=>{
- const file=e.target.files[0];
- if(!file)return;
+  p.appendChild(strong);
+  p.appendChild(document.createTextNode(value || translations[currentLanguage].notAvailable));
 
- if(!file.type.startsWith("image/")){
-  $("result").textContent=translations[currentLanguage].photoReady;
-  return;
- }
-
- const reader=new FileReader();
- reader.onload=()=>{
-  $("preview").src=reader.result;
-  $("preview").style.display="block";
- };
- reader.readAsDataURL(file);
-});
-
-$("searchCar").addEventListener("click",()=>{
- const t=translations[currentLanguage];
-
- if(!database){
-  $("result").textContent=t.loadError;
-  return;
- }
-
- const brand=$("brand").value;
- const model=$("model").value;
- const year=Number($("year").value);
-
- if(!brand||!model||!year){
-  $("result").textContent=t.chooseAll;
-  return;
- }
-
- const record=database.records.find(r=>
-  r.brand===brand &&
-  r.model===model &&
-  Array.isArray(r.years) &&
-  r.years.includes(year)
- );
-
- $("result").replaceChildren();
-
- if(!record){
-  $("result").textContent=t.noData;
-  return;
- }
-
- const lines=[
-  t.found+": "+brand+" "+model+" ("+year+")",
-  t.keyType+": "+(record.key_type||t.notAvailable),
-  t.reference+": "+(record.reference||t.notAvailable),
-  record.status==="verified"?t.verified:t.unverified
- ];
-
- lines.forEach(line=>{
-  const p=document.createElement("p");
-  p.textContent=line;
   $("result").appendChild(p);
- });
+}
+
+function displaySource(record){
+  const t = translations[currentLanguage];
+
+  const sourceId = record.source_id;
+  const sourceUrl = database.source_documents
+    ? database.source_documents[sourceId]
+    : "";
+
+  if(!sourceUrl){
+    addResultRow(t.source,t.notAvailable);
+    return;
+  }
+
+  let sourceName = t.sourceSilca;
+
+  if(sourceId === "silca_news_march_2026"){
+    sourceName = t.sourceNews;
+  }
+
+  const p = document.createElement("p");
+  p.className = "result-row";
+
+  const strong = document.createElement("strong");
+  strong.textContent = t.source + ": ";
+
+  const link = document.createElement("a");
+  link.href = sourceUrl;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.className = "source-link";
+  link.textContent = t.sourceOpen + " (" + sourceName + ")";
+
+  p.appendChild(strong);
+  p.appendChild(link);
+
+  $("result").appendChild(p);
+}
+
+function searchCar(){
+  const t = translations[currentLanguage];
+
+  if(!database){
+    $("result").textContent = t.loadError;
+    return;
+  }
+
+  const brand = $("brand").value;
+  const model = $("model").value;
+  const year = Number($("year").value);
+
+  if(!brand || !model || !year){
+    $("result").textContent = t.chooseAll;
+    return;
+  }
+
+  const record = database.records.find(r =>
+    r.brand === brand &&
+    r.model === model &&
+    Array.isArray(r.years) &&
+    r.years.includes(year)
+  );
+
+  $("result").replaceChildren();
+
+  if(!record){
+    $("result").textContent = t.noData;
+    return;
+  }
+
+  const title = document.createElement("p");
+  title.className = "result-title";
+  title.textContent = t.found + ": " + brand + " " + model + " (" + year + ")";
+  $("result").appendChild(title);
+
+  addResultRow(t.keyType,record.key_type);
+  addResultRow(t.reference,record.reference);
+
+  const chassis = Array.isArray(record.chassis)
+    ? record.chassis.join(", ")
+    : record.chassis;
+
+  addResultRow(t.chassis,chassis);
+
+  addResultRow(
+    t.buttons,
+    record.buttons ? String(record.buttons) : ""
+  );
+
+  addResultRow(t.transponder,record.transponder);
+  addResultRow(t.blade,record.blade);
+  addResultRow(t.frequency,record.frequency);
+
+  displaySource(record);
+
+  const status = document.createElement("div");
+
+  if(record.status === "verified"){
+    status.className = "status-ok";
+    status.textContent = t.verified;
+  }else{
+    status.className = "status-warning";
+    status.textContent = t.unverified;
+  }
+
+  $("result").appendChild(status);
+
+  const note = document.createElement("p");
+  note.className = "small";
+  note.textContent = database.verification_note || t.notice;
+  $("result").appendChild(note);
+}
+
+$("brand").addEventListener("change",() => fillModels());
+$("model").addEventListener("change",() => fillYears());
+
+$("language").addEventListener("change",e => {
+  changeLanguage(e.target.value);
 });
+
+$("photo").addEventListener("change",e => {
+  const file = e.target.files[0];
+
+  if(!file) return;
+
+  if(!file.type.startsWith("image/")){
+    $("result").textContent = translations[currentLanguage].photoReady;
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    $("preview").src = reader.result;
+    $("preview").style.display = "block";
+  };
+
+  reader.readAsDataURL(file);
+});
+
+$("searchCar").addEventListener("click",searchCar);
 
 changeLanguage("ar");
 loadDatabase();
