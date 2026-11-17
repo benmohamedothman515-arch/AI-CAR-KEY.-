@@ -1,7 +1,12 @@
 
 {
   "database_name": "AI CAR KEY",
-  "version": "1.1",
+  "version": "1.2",
+  "verification_note": "Catalog-listed applications only. Confirm exact chassis, vehicle market and installed key before confirming compatibility.",
+  "source_documents": {
+    "silca_january_2026": "https://a.storyblok.com/f/241607/x/79124c1445/prox-slot-car-key-catalogue-01-2026-de-low.pdf",
+    "silca_news_march_2026": "https://a.storyblok.com/f/241607/x/6353db3722/nr-03-2026.pdf"
+  },
   "records": [
     {
       "brand": "Toyota",
@@ -11,12 +16,11 @@
       "reference": "TOY53CP42",
       "chassis": ["MZEH12", "NRE210", "ZWE211"],
       "buttons": 2,
+      "transponder": "49-1E",
       "blade": "TOY53",
       "frequency": "433FM",
-      "catalog_marking": "49-1E",
       "status": "needs_verification",
-      "source": "Silca TOY53CP42 catalogue",
-      "notes": "Catalog application. Match chassis and vehicle market before confirming."
+      "source_id": "silca_january_2026"
     },
     {
       "brand": "Toyota",
@@ -26,12 +30,11 @@
       "reference": "TOY53YP42",
       "chassis": ["KSP21", "MXP*11"],
       "buttons": 2,
+      "transponder": "49-1E",
       "blade": "TOY53",
       "frequency": "433FM",
-      "catalog_marking": "49-1E",
       "status": "needs_verification",
-      "source": "Silca Proximity catalogue October 2025",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_january_2026"
     },
     {
       "brand": "Toyota",
@@ -41,12 +44,11 @@
       "reference": "TOY53YP42",
       "chassis": ["MXP*10"],
       "buttons": 2,
+      "transponder": "49-1E",
       "blade": "TOY53",
       "frequency": "433FM",
-      "catalog_marking": "49-1E",
       "status": "needs_verification",
-      "source": "Silca Proximity catalogue October 2025",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_january_2026"
     },
     {
       "brand": "Toyota",
@@ -56,12 +58,11 @@
       "reference": "TOY53YP42",
       "chassis": ["KGB70"],
       "buttons": 2,
+      "transponder": "49-1E",
       "blade": "TOY53",
       "frequency": "433FM",
-      "catalog_marking": "49-1E",
       "status": "needs_verification",
-      "source": "Silca Proximity catalogue October 2025",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_january_2026"
     },
     {
       "brand": "Hyundai",
@@ -70,12 +71,12 @@
       "key_type": "Remote flip key",
       "reference": "KIA8BR42",
       "chassis": ["PB"],
+      "buttons": 3,
+      "transponder": "46",
       "blade": "KIA8",
       "frequency": "433FM",
-      "catalog_marking": "46",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Hyundai",
@@ -84,12 +85,12 @@
       "key_type": "Remote flip key",
       "reference": "KIA8BR42",
       "chassis": ["EL"],
+      "buttons": 3,
+      "transponder": "46",
       "blade": "KIA8",
       "frequency": "433FM",
-      "catalog_marking": "46",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Hyundai",
@@ -98,12 +99,12 @@
       "key_type": "Remote flip key",
       "reference": "KIA8BR42",
       "chassis": ["LM"],
+      "buttons": 3,
+      "transponder": "46",
       "blade": "KIA8",
       "frequency": "433FM",
-      "catalog_marking": "46",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Kia",
@@ -112,12 +113,12 @@
       "key_type": "Remote flip key",
       "reference": "KIA8CR42",
       "chassis": ["QL"],
+      "buttons": 3,
+      "transponder": "06-E60",
       "blade": "KIA8",
       "frequency": "433FM",
-      "catalog_marking": "06-E60",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Mazda",
@@ -126,12 +127,12 @@
       "key_type": "Remote flip key",
       "reference": "MAZ24RR42",
       "chassis": ["DE"],
+      "buttons": 3,
+      "transponder": "63/6F63",
       "blade": "MAZ24",
       "frequency": "433AM",
-      "catalog_marking": "63/6F63",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Mazda",
@@ -140,12 +141,12 @@
       "key_type": "Remote flip key",
       "reference": "MAZ24RR42",
       "chassis": ["BL"],
+      "buttons": 3,
+      "transponder": "63/6F63",
       "blade": "MAZ24",
       "frequency": "433AM",
-      "catalog_marking": "63/6F63",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Mazda",
@@ -154,12 +155,12 @@
       "key_type": "Remote flip key",
       "reference": "MAZ24RR42",
       "chassis": ["CR"],
+      "buttons": 3,
+      "transponder": "63/6F63",
       "blade": "MAZ24",
       "frequency": "433AM",
-      "catalog_marking": "63/6F63",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Mazda",
@@ -168,12 +169,12 @@
       "key_type": "Remote flip key",
       "reference": "MAZ24RR42",
       "chassis": ["CW"],
+      "buttons": 3,
+      "transponder": "63/6F63",
       "blade": "MAZ24",
       "frequency": "433AM",
-      "catalog_marking": "63/6F63",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Mazda",
@@ -182,12 +183,12 @@
       "key_type": "Remote flip key",
       "reference": "MAZ24RR42",
       "chassis": ["GH"],
+      "buttons": 3,
+      "transponder": "63/6F63",
       "blade": "MAZ24",
       "frequency": "433AM",
-      "catalog_marking": "63/6F63",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Mazda",
@@ -196,12 +197,12 @@
       "key_type": "Remote flip key",
       "reference": "MAZ24RR42",
       "chassis": ["ER"],
+      "buttons": 3,
+      "transponder": "63/6F63",
       "blade": "MAZ24",
       "frequency": "433AM",
-      "catalog_marking": "63/6F63",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
     },
     {
       "brand": "Mazda",
@@ -210,12 +211,68 @@
       "key_type": "Remote flip key",
       "reference": "MAZ24RR42",
       "chassis": ["NC"],
+      "buttons": 3,
+      "transponder": "63/6F63",
       "blade": "MAZ24",
       "frequency": "433AM",
-      "catalog_marking": "63/6F63",
       "status": "needs_verification",
-      "source": "Silca News 03-2026",
-      "notes": "Catalog application. Verify exact chassis and market."
+      "source_id": "silca_news_march_2026"
+    },
+    {
+      "brand": "Peugeot",
+      "model": "208",
+      "years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+      "key_type": "Remote flip key",
+      "reference": "HU83R21",
+      "chassis": ["A9 (VF3CA8/C)"],
+      "buttons": 3,
+      "transponder": "46",
+      "blade": "HU83",
+      "frequency": "433FM",
+      "status": "needs_verification",
+      "source_id": "silca_january_2026"
+    },
+    {
+      "brand": "Peugeot",
+      "model": "301",
+      "years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "key_type": "Remote flip key",
+      "reference": "HU83R21",
+      "chassis": [],
+      "buttons": 3,
+      "transponder": "46",
+      "blade": "HU83",
+      "frequency": "433FM",
+      "status": "needs_verification",
+      "source_id": "silca_january_2026"
+    },
+    {
+      "brand": "Peugeot",
+      "model": "308",
+      "years": [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "key_type": "Remote flip key",
+      "reference": "HU83R21",
+      "chassis": ["T9 (VF3L)"],
+      "buttons": 3,
+      "transponder": "46",
+      "blade": "HU83",
+      "frequency": "433FM",
+      "status": "needs_verification",
+      "source_id": "silca_january_2026"
+    },
+    {
+      "brand": "Peugeot",
+      "model": "2008",
+      "years": [2013, 2014, 2015, 2016, 2017, 2018],
+      "key_type": "Remote flip key",
+      "reference": "HU83R21",
+      "chassis": ["A94 (VF3C)"],
+      "buttons": 3,
+      "transponder": "46",
+      "blade": "HU83",
+      "frequency": "433FM",
+      "status": "needs_verification",
+      "source_id": "silca_january_2026"
     }
   ]
 }
